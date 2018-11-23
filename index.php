@@ -6,48 +6,50 @@ $tasks = [
     [
         "task" => "Собеседование в IT компании",
         "date" => "01.12.2018",
-        "category" => $projects[2],
+        "category" => "Работа",
         "is_done" => false
     ],
     [
         "task" => "Выполнить тестовое задание",
         "date" => "25.12.2018",
-        "category" => $projects[2],
+        "category" => "Работа",
         "is_done" => false
     ],
     [
         "task" => "Сделать задание первого раздела",
         "date" => "21.12.2018",
-        "category" => $projects[1],
+        "category" => "Учеба",
         "is_done" => true
     ],
     [
         "task" => "Встреча с другом",
         "date" => "22.12.2018",
-        "category" => $projects[0],
+        "category" => "Входящие",
         "is_done" => false
     ],
     [
         "task" => "Купить корм для кота",
         "date" => "",
-        "category" => $projects[3],
+        "category" => "Домашние дела",
         "is_done" => false
     ],
     [
         "task" => "Заказать пиццу",
         "date" => "",
-        "category" => $projects[3],
+        "category" => "Домашние дела",
         "is_done" => false
     ],
 ];
 
-function quantity_tasks($tasks_list, $title_project) {
-    foreach ($tasks_list as $key => $val) {
-        if ($val["category"] === $title_project) {
-
-        }
+function count_tasks($tasks_list, $title_project) {
+    $tasks_amount = 0;
+    foreach ($tasks_list as $task) {
+       if ($title_project === $task["category"]) {
+           $tasks_amount ++;
+       }
     }
-}
+    return $tasks_amount;
+};
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -96,7 +98,7 @@ function quantity_tasks($tasks_list, $title_project) {
                         <?php foreach ($projects as $val): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?=$val; ?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"><?=count_tasks($tasks, $val); ?></span>
                         </li>
                         <?php endforeach; ?>
                     </ul>
