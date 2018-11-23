@@ -33,13 +33,10 @@ function count_tasks($tasks_list, $title_project) {
 
 function date_count($end_date) {
     $secs_in_hour = 3600;
-    $secs_in_minute = 60;
     $cur_ts = time();
     $end_ts = strtotime($end_date);
     $ts_diff = $end_ts - $cur_ts;
     $hours_until_end = floor($ts_diff / $secs_in_hour);
     return $hours_until_end;
 };
-
-$date_show = print(date_count("next monday"));
 ?>
