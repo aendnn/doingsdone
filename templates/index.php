@@ -28,7 +28,9 @@
     <?php foreach($tasks as $task): ?>
         <?php if($task["is_done"] === true && $show_complete_tasks === 0): ?>
         <?php else: ?>
-            <tr class="tasks__item task <?=($task["is_done"] === true) ? "task--completed": ""; ?>">
+            <tr class="tasks__item task
+            <?=($task["is_done"] === true) ? "task--completed": ""; ?>
+            <?=(date_count($task["date"]) <= 24) ? "task--important": ""; ?>">
 
                 <td class="task__select">
                     <label class="checkbox task__checkbox">
@@ -41,7 +43,7 @@
                     <a class="download-link" href="#">Home.psd</a>
                 </td>
 
-                <td class="task__date"><?=esc($task["date"]); ?></td>
+                <td class="task__date"><?=$task["date"]; ?></td>
             </tr>
         <?php endif; ?>
     <?php endforeach; ?>
